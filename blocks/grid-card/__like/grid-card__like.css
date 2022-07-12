@@ -1,0 +1,14 @@
+.grid-card__like {
+    background-image: url('../../../buttons/like.png');
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    object-fit: cover;
+    padding: 0;
+    width: 22px;
+    height: 19px;
+    border: 0 solid #FFFFFF;
+}
+
+.grid-card__like:hover {
+    opacity: .5;
+}

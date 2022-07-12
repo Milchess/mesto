@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./pages/index.css"/>
+</head>
+<body class="page">
+    <header class="header">
+        <img src="./logo/header-logo.svg" alt="Логотип Mesto Russia" class="header__logo"/>
+        <hr class="header__line">
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar"/>
+            <div class="profile__info">
+                <h2 class="profile__user-name">Жак-Ив&nbsp;Кусто</h2>
+                <button class="profile__edit-button" id="edit-button" type="submit"></button>
+                <p class="profile__user-vocation">Исследователь&nbsp;океана</p>
+            </div>
+            <button class="profile__add-button" id="add-button" type="button"></button>
+        </section>
+        <section class="elements">
+            <ul class="grid-cards">
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/karachaevsk.jpg" alt="храм в Карачаево-Черкессии" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Карачаевск</p>
+                            <button class="grid-card__like" id="like-button" type="button"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/elbrus.jpg" alt="гора Эльбрус" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Гора Эльбрус</p>
+                            <button class="grid-card__like"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/dombay.jpg" alt="Гора в Домбай" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Домбай</p>
+                            <button class="grid-card__like"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/elbrus.jpg" alt="гора Эльбрус" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Гора Эльбрус</p>
+                            <button class="grid-card__like"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/dombay.jpg" alt="Гора в Домбай" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Домбай</p>
+                            <button class="grid-card__like"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li class="grid-card">
+                    <figure class="grid-card__container">
+                        <img src="./images/karachaevsk.jpg" alt="храм в Карачаево-Черкессии" class="grid-card__image"/>
+                        <figcaption class="grid-card__item">
+                            <p class="grid-card__title">Карачаево-Черкессия</p>
+                            <button class="grid-card__like"></button>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy;&nbsp;2022 Mesto&nbsp;Russia</p>
+    </footer>
+</body>
+</html>
