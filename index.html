@@ -9,17 +9,16 @@
     <link rel="stylesheet" href="./pages/index.css"/>
 </head>
 <body class="page">
-
     <form class="popup">
         <fieldset class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__user-name" type="text">
-            <input class="popup__user-vocation" type="text">
+            <label class="popup__title">Редактировать профиль
+                <input class="popup__user-name" type="text">
+                <input class="popup__user-vocation" type="text">
+            </label>
             <button class="popup__submit" id="popup__submit" type="submit">Сохранить</button>
             <button class="popup__button_close" id="popup__button_close" type="button" aria-label="Закрыть"></button>
         </fieldset>
     </form>
-
     <header class="header">
         <img src="./logo/header-logo.svg" alt="Логотип Mesto Russia" class="header__logo"/>
         <hr class="header__line">
@@ -29,7 +28,7 @@
             <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar"/>
             <div class="profile__info">
                 <h2 class="profile__user-name">Жак-Ив&nbsp;Кусто</h2>
-                <button class="profile__edit-button" id="edit-button" type="submit"></button>
+                <button class="profile__edit-button" id="edit-button" type="button"></button>
                 <p class="profile__user-vocation">Исследователь&nbsp;океана</p>
             </div>
             <button class="profile__add-button" id="add-button" type="button"></button>
@@ -96,5 +95,6 @@
     <footer class="footer">
         <p class="footer__copyright">&copy;&nbsp;2022 Mesto&nbsp;Russia</p>
     </footer>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

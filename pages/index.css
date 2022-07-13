@@ -10,6 +10,7 @@
 @import url('../blocks/popup/__user-name/popup__user-name.css');
 @import url('../blocks/popup/__user-vocation/popup__user-vocation.css');
 @import url('../blocks/popup/__submit/popup__submit.css');
+@import url('../blocks/popup/popup_opened.css');
 
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__logo/header__logo.css');
@@ -32,6 +33,7 @@
 @import url('../blocks/grid-card/__item/grid-card__item.css');
 @import url('../blocks/grid-card/__title/grid-card__title.css');
 @import url('../blocks/grid-card/__like/grid-card__like.css');
+@import url('../blocks/grid-card/__like/grid-card__like_active.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');

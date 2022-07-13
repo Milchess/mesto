@@ -4,6 +4,13 @@
     font-size: 18px;
     line-height: 22px;
     margin: 8px 0 0 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 710px) {
+    .profile__user-vocation {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 385px) {
