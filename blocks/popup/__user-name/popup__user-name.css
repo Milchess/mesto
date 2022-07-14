@@ -4,7 +4,7 @@
     font-size: 14px;
     line-height: 17px;
     border: 0;
-    border-bottom: 1px solid rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
     outline: none;
     margin: 31px 0 30px 0;
     width: 100%;
@@ -12,5 +12,5 @@
 }
 
 .popup__user-name:focus {
-    box-shadow:0 0 15px 5px #6690f0;
+    box-shadow: 0 0 15px 5px #6690f0;
 }
