@@ -1,5 +1,5 @@
 # Проект Mesto
-https://github.com/Milchess/mesto.git/index.html
+https://milchess.github.io/mesto/index.html
 ------
 
 Одностраничный сайт, аналог популярной социальной сети, с возможностью редактирования профиля и добавления фото с надписями.
