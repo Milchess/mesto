@@ -1,5 +1,5 @@
 # Проект Mesto
-https://milchess.github.io/russian-travel/index.html
+https://github.com/Milchess/mesto.git
 ------
 
 Одностраничный сайт, аналог популярной социальной сети, с возможностью редактирования профиля и добавления фото с надписями.
