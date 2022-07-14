@@ -2,99 +2,100 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
-    <link rel="stylesheet" href="./pages/index.css"/>
+    <link href="./pages/index.css" rel="stylesheet"/>
 </head>
 <body class="page">
-    <form class="popup">
-        <fieldset class="popup__container">
-            <label class="popup__title">Редактировать профиль
-                <input class="popup__user-name" type="text">
-                <input class="popup__user-vocation" type="text">
-            </label>
-            <button class="popup__submit" id="popup__submit" type="submit">Сохранить</button>
-            <button class="popup__button_close" id="popup__button_close" type="button" aria-label="Закрыть"></button>
-        </fieldset>
-    </form>
-    <header class="header">
-        <img src="./logo/header-logo.svg" alt="Логотип Mesto Russia" class="header__logo"/>
-        <hr class="header__line">
-    </header>
-    <main class="content">
-        <section class="profile">
-            <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar"/>
-            <div class="profile__info">
-                <h2 class="profile__user-name">Жак-Ив&nbsp;Кусто</h2>
-                <button class="profile__edit-button" id="edit-button" type="button"></button>
-                <p class="profile__user-vocation">Исследователь&nbsp;океана</p>
-            </div>
-            <button class="profile__add-button" id="add-button" type="button"></button>
-        </section>
-        <section class="elements">
-            <ul class="grid-cards">
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/karachaevsk.jpg" alt="храм в Карачаево-Черкессии" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Карачаевск</p>
-                            <button class="grid-card__like" id="like-button" type="button"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/elbrus.jpg" alt="гора Эльбрус" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Гора Эльбрус</p>
-                            <button class="grid-card__like"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/dombay.jpg" alt="Гора в Домбай" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Домбай</p>
-                            <button class="grid-card__like"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/elbrus.jpg" alt="гора Эльбрус" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Гора Эльбрус</p>
-                            <button class="grid-card__like"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/dombay.jpg" alt="Гора в Домбай" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Домбай</p>
-                            <button class="grid-card__like"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li class="grid-card">
-                    <figure class="grid-card__container">
-                        <img src="./images/karachaevsk.jpg" alt="храм в Карачаево-Черкессии" class="grid-card__image"/>
-                        <figcaption class="grid-card__item">
-                            <p class="grid-card__title">Карачаево-Черкессия</p>
-                            <button class="grid-card__like"></button>
-                        </figcaption>
-                    </figure>
-                </li>
-            </ul>
-        </section>
-    </main>
-    <footer class="footer">
-        <p class="footer__copyright">&copy;&nbsp;2022 Mesto&nbsp;Russia</p>
-    </footer>
+<form class="popup">
+    <fieldset class="popup__container">
+        <div class="popup__title">Редактировать профиль
+            <input class="popup__user-name" type="text">
+            <input class="popup__user-vocation" type="text">
+        </div>
+        <button class="popup__submit" id="popup__submit" type="submit">Сохранить</button>
+        <button aria-label="Закрыть" class="popup__button popup__button_close" id="popup__button_close"
+                type="button"></button>
+    </fieldset>
+</form>
+<header class="header">
+    <img alt="Логотип Mesto Russia" class="header__logo" src="./logo/header-logo.svg"/>
+    <hr class="header__line">
+</header>
+<main class="content">
+    <section class="profile">
+        <img alt="аватар пользователя" class="profile__avatar" src="./images/avatar.jpg"/>
+        <div class="profile__info">
+            <h2 class="profile__user-name">Жак-Ив&nbsp;Кусто</h2>
+            <button class="profile__edit-button" id="edit-button" type="button"></button>
+            <p class="profile__user-vocation">Исследователь&nbsp;океана</p>
+        </div>
+        <button class="profile__add-button" id="add-button" type="button"></button>
+    </section>
+    <section class="elements">
+        <ul class="grid-cards">
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="храм в Карачаево-Черкессии" class="grid-card__image" src="./images/karachaevsk.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Карачаевск</p>
+                        <button class="grid-card__like" id="like-button" type="button"></button>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Гора Эльбрус</p>
+                        <button class="grid-card__like"></button>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Домбай</p>
+                        <button class="grid-card__like"></button>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Гора Эльбрус</p>
+                        <button class="grid-card__like"></button>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Домбай</p>
+                        <button class="grid-card__like"></button>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="grid-card">
+                <figure class="grid-card__container">
+                    <img alt="храм в Карачаево-Черкессии" class="grid-card__image" src="./images/karachaevsk.jpg"/>
+                    <figcaption class="grid-card__item">
+                        <p class="grid-card__title">Карачаево-Черкессия</p>
+                        <button class="grid-card__like"></button>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </section>
+</main>
+<footer class="footer">
+    <p class="footer__copyright">&copy;&nbsp;2022 Mesto&nbsp;Russia</p>
+</footer>
 <script src="./scripts/index.js"></script>
 </body>
 </html>
