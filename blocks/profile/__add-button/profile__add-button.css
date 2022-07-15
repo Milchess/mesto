@@ -1,5 +1,5 @@
 .profile__add-button {
-    background-image: url('../../../buttons/add-button.svg');
+    background-image: url('../../../images/add-button.svg');
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -22,7 +22,7 @@
     .profile__add-button {
         margin-left: 0;
         margin-top: 30px;
-        background-image: url('../../../buttons/add-button-big.svg');
+        background-image: url('../../../images/add-button-big.svg');
         width: 282px;
     }
 }
