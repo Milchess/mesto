@@ -1,0 +1,4 @@
+.grid-card__like_active {
+    background-image: url('../../../../buttons/like-active.svg');
+    background-color: transparent;
+}
