@@ -14,10 +14,3 @@
         padding: 22px;
     }
 }
-
-@media screen and (max-width: 380px) {
-    .popup__container {
-        margin-left: 19px;
-        margin-right: 19px;
-    }
-}
