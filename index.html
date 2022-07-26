@@ -83,15 +83,26 @@
 <footer class="footer">
     <p class="footer__copyright">&copy;&nbsp;2022 Mesto&nbsp;Russia</p>
 </footer>
-<div class="popup">
+<div class="popup" id="popup-profile">
     <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="popup">
-            <input class="popup__user popup__user_type_name " type="text" name="user" placeholder="Имя" required>
-            <input class="popup__user popup__user_type_vocation " type="text" name="vocation" placeholder="Род деятельности" required>
+            <input class="popup__user popup__user_type_name" type="text" name="user" placeholder="Имя" required>
+            <input class="popup__user popup__user_type_vocation" type="text" name="vocation" placeholder="Род деятельности" required>
             <button class="popup__submit" id="popup__submit" type="submit">Сохранить</button>
         </form>
-        <button aria-label="Закрыть" class="popup__button-close" id="popup__button_close" type="button"></button>
+        <button aria-label="Закрыть" class="popup__button-close" id="popup-close-profile" type="button"></button>
+    </div>
+</div>
+<div class="popup" id="popup-card">
+    <div class="popup__container">
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="popup">
+            <input class="popup__user popup__user_type_denomination" type="text" name="denomination" placeholder="Название" required>
+            <input class="popup__user popup__user_type_link-image" type="text" name="link-image" placeholder="Ссылка на картинку" required>
+            <button class="popup__submit" id="popup__create" type="submit">Создать</button>
+        </form>
+        <button aria-label="Закрыть" class="popup__button-close" id="popup-close-card" type="button"></button>
     </div>
 </div>
 <script src="./scripts/index.js"></script>
