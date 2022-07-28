@@ -23,7 +23,11 @@ for (let popupClose of popupCloses) {
 
 for (let likeActive of likeActives) {
     likeActive.addEventListener('click', function () {
-        this.classList.add('grid-card__like_active');
+        if (this.classList.contains('grid-card__like_active')) {
+            this.classList.remove('grid-card__like_active');
+        } else {
+            this.classList.add('grid-card__like_active');
+        }
     });
 }
 
