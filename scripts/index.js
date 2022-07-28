@@ -12,6 +12,9 @@ let addButton = document.querySelector('.profile__add-button');
 let popupCloses = document.querySelectorAll('.popup__button-close');
 let likeActives = document.querySelectorAll('.grid-card__like');
 
+let popupImage = document.querySelector('#popup-card-image');
+let cardImages = document.querySelectorAll('.grid-card__image');
+
 function closePopup() {
     let popup = document.querySelector('.popup_opened');
     popup.classList.remove('popup_opened');
@@ -28,6 +31,12 @@ for (let likeActive of likeActives) {
         } else {
             this.classList.add('grid-card__like_active');
         }
+    });
+}
+
+for (let cardImage of cardImages) {
+    cardImage.addEventListener('click', function () {
+        popupImage.classList.add('popup_opened');
     });
 }
 
