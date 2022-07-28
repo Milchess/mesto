@@ -23,61 +23,63 @@
     </section>
     <section class="elements">
         <ul class="grid-cards">
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <button aria-label="Удалить" class="grid-card__delete" type="button"></button>
-                    <img alt="храм в Карачаево-Черкессии" class="grid-card__image" src="./images/karachaevsk.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Карачаевск</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Гора Эльбрус</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Домбай</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Гора Эльбрус</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Домбай</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
-            <li class="grid-card">
-                <article class="grid-card__container">
-                    <img alt="храм в Карачаево-Черкессии" class="grid-card__image" src="./images/karachaevsk.jpg"/>
-                    <div class="grid-card__item">
-                        <h2 class="grid-card__title">Карачаево-Черкессия</h2>
-                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>
-                    </div>
-                </article>
-            </li>
+            <template id="grid-card-template">
+                <li class="grid-card">
+                    <article class="grid-card__container">
+                        <button aria-label="Удалить" class="grid-card__delete" type="button"></button>
+                        <img alt="" class="grid-card__image"/>
+                        <div class="grid-card__item">
+                            <h2 class="grid-card__title"></h2>
+                            <button aria-label="Лайк" class="grid-card__like" type="button"></button>
+                        </div>
+                    </article>
+                </li>
+            </template>
+            <!--            <li class="grid-card">-->
+            <!--                <article class="grid-card__container">-->
+            <!--                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>-->
+            <!--                    <div class="grid-card__item">-->
+            <!--                        <h2 class="grid-card__title">Гора Эльбрус</h2>-->
+            <!--                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>-->
+            <!--                    </div>-->
+            <!--                </article>-->
+            <!--            </li>-->
+            <!--            <li class="grid-card">-->
+            <!--                <article class="grid-card__container">-->
+            <!--                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>-->
+            <!--                    <div class="grid-card__item">-->
+            <!--                        <h2 class="grid-card__title">Домбай</h2>-->
+            <!--                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>-->
+            <!--                    </div>-->
+            <!--                </article>-->
+            <!--            </li>-->
+            <!--            <li class="grid-card">-->
+            <!--                <article class="grid-card__container">-->
+            <!--                    <img alt="гора Эльбрус" class="grid-card__image" src="./images/elbrus.jpg"/>-->
+            <!--                    <div class="grid-card__item">-->
+            <!--                        <h2 class="grid-card__title">Гора Эльбрус</h2>-->
+            <!--                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>-->
+            <!--                    </div>-->
+            <!--                </article>-->
+            <!--            </li>-->
+            <!--            <li class="grid-card">-->
+            <!--                <article class="grid-card__container">-->
+            <!--                    <img alt="Гора в Домбай" class="grid-card__image" src="./images/dombay.jpg"/>-->
+            <!--                    <div class="grid-card__item">-->
+            <!--                        <h2 class="grid-card__title">Домбай</h2>-->
+            <!--                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>-->
+            <!--                    </div>-->
+            <!--                </article>-->
+            <!--            </li>-->
+            <!--            <li class="grid-card">-->
+            <!--                <article class="grid-card__container">-->
+            <!--                    <img alt="храм в Карачаево-Черкессии" class="grid-card__image" src="./images/karachaevsk.jpg"/>-->
+            <!--                    <div class="grid-card__item">-->
+            <!--                        <h2 class="grid-card__title">Карачаево-Черкессия</h2>-->
+            <!--                        <button aria-label="Лайк" class="grid-card__like" type="button"></button>-->
+            <!--                    </div>-->
+            <!--                </article>-->
+            <!--            </li>-->
         </ul>
     </section>
 </main>
@@ -105,6 +107,13 @@
         </form>
         <button aria-label="Закрыть" class="popup__button-close" id="popup-close-card" type="button"></button>
     </div>
+</div>
+<div class="popup" id="popup-card__image_big">
+    <figure class="popup-card__container">
+        <button aria-label="Закрыть" class="popup__button-close" id="popup-close-card__image_big" type="button"></button>
+        <img alt="храм в Карачаево-Черкессии" class="popup-card__image" src="./images/karachaevsk.jpg"/>
+        <figcaption class="popup-card__title">Карачаевск</figcaption>
+    </figure>
 </div>
 <script src="./scripts/index.js"></script>
 </body>
