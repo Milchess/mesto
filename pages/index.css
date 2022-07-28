@@ -19,6 +19,7 @@
 @import url('../blocks/grid-cards/grid-cards.css');
 
 @import url('../blocks/grid-card/__container/grid-card__container.css');
+@import url('../blocks/grid-card/__delete/grid-card__delete.css');
 @import url('../blocks/grid-card/__image/grid-card__image.css');
 @import url('../blocks/grid-card/__item/grid-card__item.css');
 @import url('../blocks/grid-card/__title/grid-card__title.css');
