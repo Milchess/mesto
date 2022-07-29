@@ -63,7 +63,7 @@ function initPopup(title, link) {
     popupImage.querySelector('.popup-card__image').alt = title;
 }
 
-function bigCard(card, title, link) {
+function openImage(card, title, link) {
     let cardImage = card.querySelector('.grid-card__image');
 
     cardImage.addEventListener('click', function () {
@@ -80,9 +80,18 @@ function deleteCard(card) {
     });
 }
 
+function clearCardPopup() {
+    titleCard.value = '';
+    linkCard.value = '';
+}
+
 function closePopup() {
     let popup = document.querySelector('.popup_opened');
     popup.classList.remove('popup_opened');
+
+    if (popup.id === '#popup-card') {
+        clearCardPopup();
+    }
 }
 
 function renderCard(card) {
@@ -96,7 +105,7 @@ function createCard(card, title, link) {
 
     deleteCard(card);
     likeCard(card);
-    bigCard(card, title, link);
+    openImage(card, title, link);
 }
 
 for (let initialCard of initialCards) {
