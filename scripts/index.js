@@ -89,7 +89,7 @@ function closePopup() {
     let popup = document.querySelector('.popup_opened');
     popup.classList.remove('popup_opened');
 
-    if (popup.id === '#popup-card') {
+    if (popup.id === 'popup-card') {
         clearCardPopup();
     }
 }
