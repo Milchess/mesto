@@ -26,23 +26,23 @@ const initialCards = [
 ];
 
 const popupProfile = document.querySelector('#popup-profile');
-let nameInputProfile = popupProfile.querySelector('.popup__user_type_name');
-let jobInputProfile = popupProfile.querySelector('.popup__user_type_vocation');
+const nameInputProfile = popupProfile.querySelector('.popup__user_type_name');
+const jobInputProfile = popupProfile.querySelector('.popup__user_type_vocation');
 
 const editButton = document.querySelector('.profile__edit-button');
-let userName = document.querySelector('.profile__user-name');
-let userVocation = document.querySelector('.profile__user-vocation');
+const userName = document.querySelector('.profile__user-name');
+const userVocation = document.querySelector('.profile__user-vocation');
 
 const popupCard = document.querySelector('#popup-card');
 const addButton = document.querySelector('.profile__add-button');
-let titleCard = document.querySelector('.popup__user_type_denomination');
-let linkCard = document.querySelector('.popup__user_type_link-image');
+const titleCard = document.querySelector('.popup__user_type_denomination');
+const linkCard = document.querySelector('.popup__user_type_link-image');
 
 const closeButtons = document.querySelectorAll('.popup__button-close');
 
 const popupImage = document.querySelector('#popup-card-image');
-let cardTitleImage = popupImage.querySelector('.popup-card__title');
-let cardBigImage = popupImage.querySelector('.popup-card__image');
+const cardTitleImage = popupImage.querySelector('.popup-card__title');
+const cardBigImage = popupImage.querySelector('.popup-card__image');
 
 const cardTemplate = document.querySelector('#grid-card-template').content;
 const cardsContainer = document.querySelector('.grid-cards');
@@ -50,8 +50,8 @@ const cardsContainer = document.querySelector('.grid-cards');
 function likeCard(card) {
     const likeActive = card.querySelector('.grid-card__like');
 
-    likeActive.addEventListener('click', function () {
-        this.classList.toggle('grid-card__like_active');
+    likeActive.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('grid-card__like_active');
     });
 }
 
@@ -89,10 +89,12 @@ function renderCard(card) {
 
 function createCard(title, link) {
     const card = cardTemplate.querySelector('.grid-card').cloneNode(true);
+    const gridCardTitle = card.querySelector('.grid-card__title');
+    const gridCardImage = card.querySelector('.grid-card__image');
 
-    card.querySelector('.grid-card__title').textContent = title;
-    card.querySelector('.grid-card__image').src = link;
-    card.querySelector('.grid-card__image').alt = title;
+    gridCardTitle.textContent = title;
+    gridCardImage.src = link;
+    gridCardImage.alt = title;
 
     deleteCard(card);
     likeCard(card);
@@ -105,8 +107,8 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-for (let initialCard of initialCards) {
-    let cardElement = createCard(initialCard.name, initialCard.link);
+for (const initialCard of initialCards) {
+    const cardElement = createCard(initialCard.name, initialCard.link);
     renderCard(cardElement);
 }
 
@@ -130,7 +132,7 @@ editButton.addEventListener('click', () => {
 
 popupCard.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    let cardElement = createCard(titleCard.value, linkCard.value);
+    const cardElement = createCard(titleCard.value, linkCard.value);
     renderCard(cardElement);
 
     closePopup();
