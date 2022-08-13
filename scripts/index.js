@@ -80,7 +80,9 @@ function deleteCard(card) {
 
 function closePopup() {
     const popup = document.querySelector('.popup_opened');
-    popup.classList.remove('popup_opened');
+    if (popup.classList.contains('popup_opened')) {
+        popup.classList.remove('popup_opened');
+    }
 }
 
 function renderCard(card) {
@@ -105,6 +107,20 @@ function createCard(title, link) {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener("keydown", escClosePopup);
+
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup();
+        }
+    });
+}
+
+function escClosePopup(evt) {
+    const popup = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape' && popup !== null) {
+        closePopup();
+    }
 }
 
 for (const initialCard of initialCards) {
@@ -113,8 +129,7 @@ for (const initialCard of initialCards) {
 }
 
 closeButtons.forEach((button) => {
-    const popup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(popup));
+    button.addEventListener('click', () => closePopup());
 });
 
 popupProfile.addEventListener('submit', (evt) => {
