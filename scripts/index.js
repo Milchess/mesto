@@ -108,12 +108,12 @@ function createCard(title, link) {
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener("keydown", escClosePopup);
-
     popup.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
             closePopup();
         }
     });
+    deletePopupError(model, popup);
 }
 
 function escClosePopup(evt) {
@@ -143,6 +143,8 @@ editButton.addEventListener('click', () => {
     openPopup(popupProfile);
     nameInputProfile.value = userName.textContent;
     jobInputProfile.value = userVocation.textContent;
+
+    deletePopupError(model, popupProfile);
 });
 
 popupCard.addEventListener('submit', (evt) => {
