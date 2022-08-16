@@ -47,7 +47,7 @@ const cardBigImage = popupImage.querySelector('.popup-card__image');
 const cardTemplate = document.querySelector('#grid-card-template').content;
 const cardsContainer = document.querySelector('.grid-cards');
 
-function likeCard(card) {
+function addLikeActive(card) {
     const likeActive = card.querySelector('.grid-card__like');
 
     likeActive.addEventListener('click', function (evt) {
@@ -61,7 +61,7 @@ function initImagePopup(title, link) {
     cardBigImage.src = link;
 }
 
-function openImage(card, title, link) {
+function addEventOpenImage(card, title, link) {
     const cardBigImage = card.querySelector('.grid-card__image');
 
     cardBigImage.addEventListener('click', () => {
@@ -70,7 +70,7 @@ function openImage(card, title, link) {
     });
 }
 
-function deleteCard(card) {
+function addEventDeleteCard(card) {
     const deleteButton = card.querySelector('.grid-card__delete');
     deleteButton.addEventListener('click', () => {
         const cardItem = deleteButton.closest('.grid-card');
@@ -78,11 +78,14 @@ function deleteCard(card) {
     });
 }
 
-function closePopup() {
-    const popup = document.querySelector('.popup_opened');
-    if (popup.classList.contains('popup_opened')) {
-        popup.classList.remove('popup_opened');
-    }
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener("keydown", (evt) => escClosePopup(evt, popup));
+    popup.removeEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup);
+        }
+    });
 }
 
 function renderCard(card) {
@@ -98,28 +101,27 @@ function createCard(title, link) {
     gridCardImage.src = link;
     gridCardImage.alt = title;
 
-    deleteCard(card);
-    likeCard(card);
-    openImage(card, title, link);
+    addEventDeleteCard(card);
+    addLikeActive(card);
+    addEventOpenImage(card, title, link);
 
     return card;
 }
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener("keydown", escClosePopup);
+    document.addEventListener("keydown", (evt) => escClosePopup(evt, popup));
     popup.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
-            closePopup();
+            closePopup(popup);
         }
     });
-    deletePopupError(model, popup);
+    deletePopupError(configValidate, popup);
 }
 
-function escClosePopup(evt) {
-    const popup = document.querySelector('.popup_opened');
-    if (evt.key === 'Escape' && popup !== null) {
-        closePopup();
+function escClosePopup(evt, popup) {
+    if (evt.key === 'Escape') {
+        closePopup(popup);
     }
 }
 
@@ -129,14 +131,17 @@ for (const initialCard of initialCards) {
 }
 
 closeButtons.forEach((button) => {
-    button.addEventListener('click', () => closePopup());
+    button.addEventListener('click', () => {
+        const popup = document.querySelector('.popup_opened');
+        closePopup(popup);
+    });
 });
 
 popupProfile.addEventListener('submit', (evt) => {
     evt.preventDefault();
     userName.textContent = nameInputProfile.value;
     userVocation.textContent = jobInputProfile.value;
-    closePopup();
+    closePopup(popupProfile);
 });
 
 editButton.addEventListener('click', () => {
@@ -144,7 +149,7 @@ editButton.addEventListener('click', () => {
     nameInputProfile.value = userName.textContent;
     jobInputProfile.value = userVocation.textContent;
 
-    deletePopupError(model, popupProfile);
+    deletePopupError(configValidate, popupProfile);
 });
 
 popupCard.addEventListener('submit', (evt) => {
@@ -152,13 +157,19 @@ popupCard.addEventListener('submit', (evt) => {
     const cardElement = createCard(titleCard.value, linkCard.value);
     renderCard(cardElement);
 
-    closePopup();
+    closePopup(popupCard);
     evt.target.reset();
 });
 
 addButton.addEventListener('click', () => openPopup(popupCard));
 
+const configValidate = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__user',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
 
-
-
-
+enableValidation(configValidate);
