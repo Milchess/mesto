@@ -38,8 +38,6 @@ const addButton = document.querySelector('.profile__add-button');
 const titleCard = document.querySelector('.popup__user_type_denomination');
 const linkCard = document.querySelector('.popup__user_type_link-image');
 
-const closeButtons = document.querySelectorAll('.popup__button-close');
-
 const popupImage = document.querySelector('#popup-card-image');
 const cardTitleImage = popupImage.querySelector('.popup-card__title');
 const cardBigImage = popupImage.querySelector('.popup-card__image');
@@ -47,7 +45,7 @@ const cardBigImage = popupImage.querySelector('.popup-card__image');
 const cardTemplate = document.querySelector('#grid-card-template').content;
 const cardsContainer = document.querySelector('.grid-cards');
 
-function addLikeActive(card) {
+function addLikeActiveListener(card) {
     const likeActive = card.querySelector('.grid-card__like');
 
     likeActive.addEventListener('click', function (evt) {
@@ -61,7 +59,7 @@ function initImagePopup(title, link) {
     cardBigImage.src = link;
 }
 
-function addEventOpenImage(card, title, link) {
+function addEventOpenImageListener(card, title, link) {
     const cardBigImage = card.querySelector('.grid-card__image');
 
     cardBigImage.addEventListener('click', () => {
@@ -70,7 +68,7 @@ function addEventOpenImage(card, title, link) {
     });
 }
 
-function addEventDeleteCard(card) {
+function addEventDeleteCardListener(card) {
     const deleteButton = card.querySelector('.grid-card__delete');
     deleteButton.addEventListener('click', () => {
         const cardItem = deleteButton.closest('.grid-card');
@@ -80,9 +78,9 @@ function addEventDeleteCard(card) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener("keydown", (evt) => escClosePopup(evt, popup));
+    document.removeEventListener("keydown", escClosePopup);
     popup.removeEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
+        if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
             closePopup(popup);
         }
     });
@@ -101,26 +99,27 @@ function createCard(title, link) {
     gridCardImage.src = link;
     gridCardImage.alt = title;
 
-    addEventDeleteCard(card);
-    addLikeActive(card);
-    addEventOpenImage(card, title, link);
+    addEventDeleteCardListener(card);
+    addLikeActiveListener(card);
+    addEventOpenImageListener(card, title, link);
 
     return card;
 }
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener("keydown", (evt) => escClosePopup(evt, popup));
+    document.addEventListener("keydown", escClosePopup);
     popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
+        if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
             closePopup(popup);
         }
     });
-    deletePopupError(configValidate, popup);
+    deletePopupError(validationConfig, popup);
 }
 
-function escClosePopup(evt, popup) {
+function escClosePopup(evt) {
     if (evt.key === 'Escape') {
+        const popup = document.querySelector('.popup_opened');
         closePopup(popup);
     }
 }
@@ -129,13 +128,6 @@ for (const initialCard of initialCards) {
     const cardElement = createCard(initialCard.name, initialCard.link);
     renderCard(cardElement);
 }
-
-closeButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const popup = document.querySelector('.popup_opened');
-        closePopup(popup);
-    });
-});
 
 popupProfile.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -149,7 +141,7 @@ editButton.addEventListener('click', () => {
     nameInputProfile.value = userName.textContent;
     jobInputProfile.value = userVocation.textContent;
 
-    deletePopupError(configValidate, popupProfile);
+    deletePopupError(validationConfig, popupProfile);
 });
 
 popupCard.addEventListener('submit', (evt) => {
@@ -163,7 +155,7 @@ popupCard.addEventListener('submit', (evt) => {
 
 addButton.addEventListener('click', () => openPopup(popupCard));
 
-const configValidate = {
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__user',
     submitButtonSelector: '.popup__submit',
@@ -172,4 +164,4 @@ const configValidate = {
     errorClass: 'popup__error_visible'
 };
 
-enableValidation(configValidate);
+enableValidation(validationConfig);
