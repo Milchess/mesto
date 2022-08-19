@@ -45,6 +45,12 @@ const cardBigImage = popupImage.querySelector('.popup-card__image');
 const cardTemplate = document.querySelector('#grid-card-template').content;
 const cardsContainer = document.querySelector('.grid-cards');
 
+const closePopupByClickOnOverLayOrButton = (evt) => {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
+        closePopup(evt.currentTarget);
+    }
+}
+
 function addLikeActiveListener(card) {
     const likeActive = card.querySelector('.grid-card__like');
 
@@ -79,11 +85,7 @@ function addEventDeleteCardListener(card) {
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener("keydown", escClosePopup);
-    popup.removeEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
-            closePopup(popup);
-        }
-    });
+    popup.removeEventListener('click', closePopupByClickOnOverLayOrButton);
 }
 
 function renderCard(card) {
@@ -109,11 +111,7 @@ function createCard(title, link) {
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener("keydown", escClosePopup);
-    popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__button-close')) {
-            closePopup(popup);
-        }
-    });
+    popup.addEventListener('click', closePopupByClickOnOverLayOrButton);
     deletePopupError(validationConfig, popup);
 }
 
