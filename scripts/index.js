@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -42,7 +44,7 @@ const popupImage = document.querySelector('#popup-card-image');
 const cardTitleImage = popupImage.querySelector('.popup-card__title');
 const cardBigImage = popupImage.querySelector('.popup-card__image');
 
-const cardTemplate = document.querySelector('#grid-card-template').content;
+const cardTemplate = document.querySelector('#grid-card-template');
 const cardsContainer = document.querySelector('.grid-cards');
 
 const closePopupByClickOnOverLayOrButton = (evt) => {
@@ -51,61 +53,10 @@ const closePopupByClickOnOverLayOrButton = (evt) => {
     }
 }
 
-function addLikeActiveListener(card) {
-    const likeActive = card.querySelector('.grid-card__like');
-
-    likeActive.addEventListener('click', function (evt) {
-        evt.target.classList.toggle('grid-card__like_active');
-    });
-}
-
-function initImagePopup(title, link) {
-    cardTitleImage.textContent = title;
-    cardTitleImage.alt = title;
-    cardBigImage.src = link;
-}
-
-function addEventOpenImageListener(card, title, link) {
-    const cardBigImage = card.querySelector('.grid-card__image');
-
-    cardBigImage.addEventListener('click', () => {
-        openPopup(popupImage);
-        initImagePopup(title, link);
-    });
-}
-
-function addEventDeleteCardListener(card) {
-    const deleteButton = card.querySelector('.grid-card__delete');
-    deleteButton.addEventListener('click', () => {
-        const cardItem = deleteButton.closest('.grid-card');
-        cardItem.remove();
-    });
-}
-
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener("keydown", escClosePopup);
     popup.removeEventListener('click', closePopupByClickOnOverLayOrButton);
-}
-
-function renderCard(card) {
-    cardsContainer.prepend(card);
-}
-
-function createCard(title, link) {
-    const card = cardTemplate.querySelector('.grid-card').cloneNode(true);
-    const gridCardTitle = card.querySelector('.grid-card__title');
-    const gridCardImage = card.querySelector('.grid-card__image');
-
-    gridCardTitle.textContent = title;
-    gridCardImage.src = link;
-    gridCardImage.alt = title;
-
-    addEventDeleteCardListener(card);
-    addLikeActiveListener(card);
-    addEventOpenImageListener(card, title, link);
-
-    return card;
 }
 
 function openPopup(popup) {
@@ -122,10 +73,32 @@ function escClosePopup(evt) {
     }
 }
 
+function renderCard(card) {
+    cardsContainer.prepend(card);
+}
+
 for (const initialCard of initialCards) {
-    const cardElement = createCard(initialCard.name, initialCard.link);
+    const card = new Card(initialCard, cardTemplate);
+    const cardElement = card._createCard();
+
     renderCard(cardElement);
 }
+
+popupCard.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const item = {
+        name: titleCard.value,
+        link: linkCard.value
+    }
+
+    const card = new Card(item, cardTemplate);
+    const cardElement = card._createCard();
+
+    renderCard(cardElement);
+
+    closePopup(popupCard);
+    evt.target.reset();
+});
 
 popupProfile.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -142,15 +115,6 @@ editButton.addEventListener('click', () => {
     deletePopupError(validationConfig, popupProfile);
 });
 
-popupCard.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const cardElement = createCard(titleCard.value, linkCard.value);
-    renderCard(cardElement);
-
-    closePopup(popupCard);
-    evt.target.reset();
-});
-
 addButton.addEventListener('click', () => openPopup(popupCard));
 
 const validationConfig = {
@@ -163,3 +127,5 @@ const validationConfig = {
 };
 
 enableValidation(validationConfig);
+
+export {popupImage, cardTitleImage, cardBigImage, openPopup};
