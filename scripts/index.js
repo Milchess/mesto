@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const initialCards = [
     {
@@ -26,6 +27,15 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__user',
+    submitButtonSelector: '.popup__submit',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
 
 const popupProfile = document.querySelector('#popup-profile');
 const nameInputProfile = popupProfile.querySelector('.popup__user_type_name');
@@ -63,7 +73,12 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener("keydown", escClosePopup);
     popup.addEventListener('click', closePopupByClickOnOverLayOrButton);
-    deletePopupError(validationConfig, popup);
+
+    if (popup.querySelector(validationConfig.inputSelector)) {
+        const formValidator = new FormValidator(validationConfig, popup);
+        formValidator.enableValidation();
+        formValidator.deletePopupError();
+    }
 }
 
 function escClosePopup(evt) {
@@ -108,24 +123,12 @@ popupProfile.addEventListener('submit', (evt) => {
 });
 
 editButton.addEventListener('click', () => {
-    openPopup(popupProfile);
     nameInputProfile.value = userName.textContent;
     jobInputProfile.value = userVocation.textContent;
 
-    deletePopupError(validationConfig, popupProfile);
+    openPopup(popupProfile);
 });
 
 addButton.addEventListener('click', () => openPopup(popupCard));
-
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__user',
-    submitButtonSelector: '.popup__submit',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-};
-
-enableValidation(validationConfig);
 
 export {popupImage, cardTitleImage, cardBigImage, openPopup};
