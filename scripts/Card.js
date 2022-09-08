@@ -1,58 +1,50 @@
-import {popupImage, cardTitleImage, cardBigImage, openPopup} from './index.js';
-
 export default class Card {
-    constructor(data, templateSelector) {
+    constructor(data, template, handleCardClick) {
         this._title = data.name;
         this._link = data.link;
-        this._templateSelector = templateSelector;
+        this._template = template;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
-        const cardElement = this._templateSelector.content.querySelector('.grid-card').cloneNode(true);
+        const cardElement = this._template.content.querySelector('.grid-card').cloneNode(true);
         this._gridCardTitle = cardElement.querySelector('.grid-card__title');
         this._gridCardImage = cardElement.querySelector('.grid-card__image');
 
         return cardElement;
     }
 
-    _createCard() {
+    _generateButton() {
+        this._likeButton = this._element.querySelector('.grid-card__like');
+        this._deleteButton = this._element.querySelector('.grid-card__delete');
+    }
+
+    createCard() {
         this._element = this._getTemplate();
+        this._generateButton();
 
         this._gridCardTitle.textContent = this._title;
         this._gridCardImage.src = this._link;
         this._gridCardImage.alt = this._title;
 
-        this._addEventDeleteCardListener();
-        this._addLikeActiveListener();
-        this._addEventOpenImageListener();
+        this._setEventListeners();
 
         return this._element;
     }
 
     _addEventDeleteCardListener() {
-        const deleteButton = this._element.querySelector('.grid-card__delete');
-        deleteButton.addEventListener('click', () => deleteButton.closest('.grid-card').remove());
+        this._deleteButton.addEventListener('click', () => this._deleteButton.closest('.grid-card').remove());
     }
 
     _addLikeActiveListener() {
-        const likeActive = this._element.querySelector('.grid-card__like');
-
-        likeActive.addEventListener('click', function (evt) {
+        this._likeButton.addEventListener('click', function (evt) {
             evt.target.classList.toggle('grid-card__like_active');
         });
     }
 
-    _addEventOpenImageListener() {
-        const cardBigImage = this._element.querySelector('.grid-card__image');
-        cardBigImage.addEventListener('click', () => {
-            openPopup(popupImage);
-            this._initImagePopup();
-        });
-    }
-
-    _initImagePopup() {
-        cardTitleImage.textContent = this._title;
-        cardBigImage.alt = this._title;
-        cardBigImage.src = this._link;
+    _setEventListeners() {
+        this._addEventDeleteCardListener();
+        this._addLikeActiveListener();
+        this._gridCardImage.addEventListener('click', () => this._handleCardClick(this._title, this._link));
     }
 }
