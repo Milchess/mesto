@@ -127,10 +127,9 @@ popupCard.addEventListener('submit', (evt) => {
         link: linkCard.value
     }
 
-    const card = new Card(item, cardTemplate, handleCardClick);
-    const cardElement = card.createCard();
-
+    const cardElement = createCard(item);
     renderCard(cardElement);
+
     closePopup(popupCard);
     evt.target.reset();
 });
