@@ -5,16 +5,14 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Mesto</title>
-    <link href="./pages/index.css" rel="stylesheet"/>
-    <script type="module" defer src="./scripts/index.js"></script>
 </head>
 <body class="page">
 <header class="header">
-    <img alt="Логотип Mesto Russia" class="header__logo" src="images/header-logo.svg"/>
+    <img alt="Логотип Mesto Russia" class="header__logo" src="<%=require('../src/images/header-logo.svg')%>"/>
 </header>
 <main class="content">
     <section class="profile">
-        <img alt="аватар пользователя" class="profile__avatar" src="./images/avatar.jpg"/>
+        <img alt="аватар пользователя" class="profile__avatar" src="<%=require('../src/images/avatar.jpg')%>"/>
         <div class="profile__info">
             <h1 class="profile__user-name">Жак-Ив&nbsp;Кусто</h1>
             <button aria-label="Редактировать" class="profile__edit-button" id="edit-button" type="button"></button>
