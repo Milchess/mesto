@@ -62,6 +62,24 @@
         <figcaption class="popup-card__title"></figcaption>
     </figure>
 </div>
+<div class="popup" id="popup-avatar">
+    <div class="popup__container">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="popup-form-avatar" novalidate>
+            <input class="popup__user popup__user_type_avatar" name="avatar" placeholder="Аватар" required type="url">
+            <span class="popup__error avatar-error"></span>
+            <button class="popup__submit" id="popup__avatar-sub" type="submit">Сохранить</button>
+        </form>
+        <button aria-label="Закрыть" class="popup__button-close" id="popup-close-avatar" type="button"></button>
+    </div>
+</div>
+<div class="popup" id="popup-delete_card">
+    <div class="popup__container">
+        <h3 class="popup__title">Вы уверены?</h3>
+        <button class="popup__submit" id="popup__delete_card" type="button">Да</button>
+        <button aria-label="Закрыть" class="popup__button-close" id="popup-close-delete-card" type="button"></button>
+    </div>
+</div>
 <template id="grid-card-template">
     <li class="grid-card">
         <article class="grid-card__container">
@@ -69,7 +87,10 @@
             <img alt="" class="grid-card__image" src="#"/>
             <div class="grid-card__item">
                 <h2 class="grid-card__title"></h2>
-                <button aria-label="Лайк" class="grid-card__like" type="button"></button>
+                <div>
+                    <button aria-label="Лайк" class="grid-card__like" type="button"></button>
+                    <p class="grid-card__like-quantity"></p>
+                </div>
             </div>
         </article>
     </li>
