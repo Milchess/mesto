@@ -7,23 +7,24 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import {
-    initialCards,
     validationConfig,
     editButton,
     addButton,
     cardTemplate
 } from "../utils/constants";
 
+import Api from "../components/Api";
+
+const api = new Api();
+
 const userInfo = new UserInfo('.profile__user-name', '.profile__user-vocation');
 const popupWithImage = new PopupWithImage('#popup-card-image');
 
-const cardList = new Section({
-    items: initialCards,
-    renderer: (item) => {
+const cardList = new Section(
+    (item) => {
         const card = createCard(item);
         cardList.addItem(card);
-    }
-}, '.grid-cards');
+    }, '.grid-cards');
 
 const popupWithCardPopup = new PopupWithForm('#popup-card', (item) => {
     cardList.addItem(createCard({name: item.denomination, link: item.link}));
@@ -73,4 +74,7 @@ addButton.addEventListener('click', () => {
 popupWithProfilePopup.setEventListeners();
 popupWithCardPopup.setEventListeners();
 popupWithImage.setEventListeners();
-cardList.renderItems();
+
+api.getInitialCards().then((data) => {
+    cardList.renderItems(data);
+});
