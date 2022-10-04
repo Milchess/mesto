@@ -2,12 +2,14 @@ export default class Card {
     constructor(data, template, handleCardClick) {
         this._title = data.name;
         this._link = data.link;
+        this._id = data._id;
         this._template = template;
         this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
         const cardElement = this._template.content.querySelector('.grid-card').cloneNode(true);
+
         this._gridCardTitle = cardElement.querySelector('.grid-card__title');
         this._gridCardImage = cardElement.querySelector('.grid-card__image');
 
@@ -27,6 +29,7 @@ export default class Card {
         this._gridCardImage.src = this._link;
         this._gridCardImage.alt = this._title;
 
+        this._element.id = this._id;
         this._setEventListeners();
 
         return this._element;
