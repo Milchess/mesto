@@ -7,9 +7,9 @@ export default class Api {
         }
     }
 
-    _fetchNoBody(method, link) {
+    _get(link) {
         return fetch(this._baseUrl + link, {
-            method: method,
+            method: 'GET',
             headers: this._headers,
         })
             .then(res => {
@@ -20,13 +20,13 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
             .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
+                console.log(err);
             });
     }
 
-    _fetchBody(method, link, model = {}) {
+    _post(link, model) {
         return fetch(this._baseUrl + link, {
-            method: method,
+            method: 'POST',
             headers: this._headers,
             body: JSON.stringify(model)
         })
@@ -38,40 +38,92 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
             .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
+                console.log(err);
+            });
+    }
+
+    _patch(link, model) {
+        return fetch(this._baseUrl + link, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify(model)
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    _put(link) {
+        return fetch(this._baseUrl + link, {
+            method: 'PUT',
+            headers: this._headers,
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    _delete(link) {
+        return fetch(this._baseUrl + link, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err);
             });
     }
 
     getInitialCards() {
-        return this._fetchNoBody('GET', 'cards');
-        //return this._fetchBody('POST', 'cards', {name:'aaa', link:'aaa'})
+        return this._get('cards');
     }
 
     getUserInformation() {
-        return this._fetchNoBody('GET', 'users/me');
+        return this._get('users/me');
     }
 
-    patchUserUpdate(model) {
-        return this._fetchBody('PATCH', 'users/me', model);
+    setUserUpdate(model) {
+        return this._patch('users/me', model);
     }
 
-    postCreateCard(model) {
-        return this._fetchBody('POST', 'cards', model);
+    setCreateCard(model) {
+        return this._post('cards', model);
     }
 
-    deleteCard(cardId) {
-        return this._fetchNoBody('DELETE', `cards/${cardId}`);
+// TODO ОТОБРАЖЕНИЕ КАРТОЧКИ УДАЛЕНИЯ
+    setDeleteCard(cardId) {
+        return this._delete(`cards/${cardId}`);
     }
 
-    putLikeCard(cardId) {
-        return this._fetchNoBody('PUT', `cards/${cardId}/likes`);
+    setLikeCard(cardId) {
+        return this._put(`cards/${cardId}/likes`);
     }
 
-    deleteLikeCard(cardId) {
-        return this._fetchNoBody('DELETE', `cards/${cardId}/likes`);
+    setDeleteLikeCard(cardId) {
+        return this._delete(`cards/${cardId}/likes`);
     }
 
-    patchUserAvatar(model) {
-        return this._fetchBody('PATCH', 'users/me/avatar', model);
+    setUserAvatar(model) {
+        return this._patch('users/me/avatar', model);
     }
 }
