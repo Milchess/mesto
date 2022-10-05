@@ -110,7 +110,6 @@ export default class Api {
         return this._post('cards', model);
     }
 
-// TODO ОТОБРАЖЕНИЕ КАРТОЧКИ УДАЛЕНИЯ
     setDeleteCard(cardId) {
         return this._delete(`cards/${cardId}`);
     }

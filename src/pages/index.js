@@ -15,8 +15,9 @@ import {
 } from "../utils/constants";
 
 import Api from "../components/Api";
-import Popup from "../components/Popup";
+import PopupDeleteCard from "../components/PopupDeleteCard";
 
+let userId = null;
 const api = new Api();
 
 const userInfo = new UserInfo('.profile__user-name', '.profile__user-vocation', '.profile__avatar');
@@ -29,22 +30,28 @@ const cardList = new Section(
     }, '.grid-cards');
 
 const popupWithCardPopup = new PopupWithForm('#popup-card', (item) => {
-    api.setCreateCard(item).then(data => cardList.addItem(createCard(data)));
+    popupWithCardPopup.renderLoading();
+    api.setCreateCard(item)
+        .then(data => cardList.addItem(createCard(data)))
+        .finally(() => popupWithCardPopup.renderLoading('Создать'));
     popupWithCardPopup.close();
 });
 
 const popupWithProfilePopup = new PopupWithForm('#popup-profile', (item) => {
-    api.setUserUpdate(item).then(data => userInfo.setUserInfo(data));
+    popupWithProfilePopup.renderLoading();
+    api.setUserUpdate(item)
+        .then(data => userInfo.setUserInfo(data))
+        .finally(() => popupWithProfilePopup.renderLoading('Сохранить'));
     popupWithProfilePopup.close();
 });
 
-const popupDeleteCard = new Popup('#popup-delete_card', (item) => {
-    api.setDeleteCard(item._id);
-    popupDeleteCard.close();
-});
+const popupDeleteCard = new PopupDeleteCard('#popup-delete_card');
 
 const popupAvatar = new PopupWithForm('#popup-avatar', (item) => {
-    api.setUserAvatar(item).then(data => userInfo.getUserAvatar(data));
+    popupAvatar.renderLoading();
+    api.setUserAvatar(item)
+        .then(data => userInfo.getUserAvatar(data))
+        .finally(() => popupAvatar.renderLoading('Сохранить'));
     popupAvatar.close();
 });
 
@@ -62,9 +69,39 @@ const enableValidation = (config) => {
 };
 
 function createCard(item) {
-    const card = new Card(item, cardTemplate, () => popupWithImage.open(item));
+    const card = new Card(item,
+        cardTemplate,
+        userId,
+        () => popupWithImage.open(item),
+        deleteCardClick,
+        handlerLikeClick,
+    );
 
-    return card.createCard();
+    const element = card.createCard(popupDeleteCard);
+    if (card.isLiked()) {
+        card.addLikeButton();
+    }
+    return element;
+}
+
+function deleteCardClick(card) {
+    popupDeleteCard.open();
+    popupDeleteCard.popupSubmitAction(() =>
+        api.setDeleteCard(card.id).then(() => {
+            card.remove();
+            popupDeleteCard.close();
+        })
+    );
+}
+
+function handlerLikeClick(card) {
+    if (card.isLiked()) {
+        api.setDeleteLikeCard(card._id).then(data => card.updateLikes(data.likes));
+        card.removeLikeButton();
+    } else {
+        api.setLikeCard(card._id).then(data => card.updateLikes(data.likes));
+        card.addLikeButton();
+    }
 }
 
 enableValidation(validationConfig);
@@ -99,6 +136,7 @@ api.getInitialCards().then((data) => {
 });
 
 api.getUserInformation().then(data => {
+        userId = data._id;
         userInfo.getUserAvatar(data);
         userInfo.setUserInfo(data);
     }
