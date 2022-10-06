@@ -33,10 +33,10 @@
     <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="popup-form-profile" novalidate>
-            <input class="popup__user popup__user_type_name" name="name" placeholder="Имя" required type="text" minlength="2" maxlength="40">
+            <input class="popup__user popup__user_type_name" maxlength="40" minlength="2" name="name" placeholder="Имя" required type="text">
             <span class="popup__error name-error"></span>
-            <input class="popup__user popup__user_type_vocation" name="about" placeholder="Род деятельности" required type="text" minlength="2"
-                   maxlength="200">
+            <input class="popup__user popup__user_type_vocation" maxlength="200" minlength="2" name="about" placeholder="Род деятельности" required
+                   type="text">
             <span class="popup__error about-error"></span>
             <button class="popup__submit" id="popup__submit" type="submit">Сохранить</button>
         </form>
@@ -47,8 +47,8 @@
     <div class="popup__container">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="popup-form-card" novalidate>
-            <input class="popup__user popup__user_type_denomination" name="name" placeholder="Название" required type="text" minlength="2"
-                   maxlength="30">
+            <input class="popup__user popup__user_type_denomination" maxlength="30" minlength="2" name="name" placeholder="Название" required
+                   type="text">
             <span class="popup__error name-error"></span>
             <input class="popup__user popup__user_type_link-image" name="link" placeholder="Ссылка на картинку" required type="url">
             <span class="popup__error link-error"></span>

@@ -12,13 +12,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers,
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then((res) => this._getResponseData(res))
             .catch((err) => {
                 console.log(err);
             });
@@ -30,13 +24,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(model)
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then((res) => this._getResponseData(res))
             .catch((err) => {
                 console.log(err);
             });
@@ -48,13 +36,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(model)
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then((res) => this._getResponseData(res))
             .catch((err) => {
                 console.log(err);
             });
@@ -65,13 +47,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers,
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then((res) => this._getResponseData(res))
             .catch((err) => {
                 console.log(err);
             });
@@ -82,16 +58,17 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then((res) => this._getResponseData(res))
             .catch((err) => {
                 console.log(err);
             });
+    }
+
+    _getResponseData(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
     }
 
     getInitialCards() {

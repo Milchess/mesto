@@ -7,7 +7,17 @@ export const validationConfig = {
     errorClass: 'popup__error_visible'
 };
 
-export const editButton = document.querySelector('.profile__edit-button');
-export const addButton = document.querySelector('.profile__add-button');
+export const cardConfig = {
+    cardSelector: '.grid-card',
+    titleSelector: '.grid-card__title',
+    imageSelector: '.grid-card__image',
+    likeButtonSelector: '.grid-card__like',
+    buttonDeleteSelector: '.grid-card__delete',
+    likeQuantitySelector: '.grid-card__like-quantity',
+    likeActiveSelector: 'grid-card__like_active',
+}
+
+export const buttonEditProfile = document.querySelector('.profile__edit-button');
+export const buttonAddCard = document.querySelector('.profile__add-button');
 export const cardTemplate = document.querySelector('#grid-card-template');
 export const avatar = document.querySelector('.profile__avatar-button');
