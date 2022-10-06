@@ -10,4 +10,4 @@ export const validationConfig = {
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
 export const cardTemplate = document.querySelector('#grid-card-template');
-export const avatar = document.querySelector('.profile__avatar');
+export const avatar = document.querySelector('.profile__avatar-button');
